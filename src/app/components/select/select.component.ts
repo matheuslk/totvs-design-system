@@ -1,10 +1,5 @@
-import { Component, forwardRef, input, output } from '@angular/core'
-import {
-  ControlValueAccessor,
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  ReactiveFormsModule,
-} from '@angular/forms'
+import { Component, computed, forwardRef, input, output } from '@angular/core'
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule, } from '@angular/forms'
 import { ISelectOption } from './select-option.interface'
 import { CommonModule } from '@angular/common'
 
@@ -25,10 +20,17 @@ export class SelectComponent implements ControlValueAccessor {
   readonly blurred = output<void>()
   readonly focused = output<void>()
 
-  readonly name = input.required<string>()
+  readonly id = input<string>()
   readonly placeholder = input<string>('Escolha uma opção')
   readonly options = input<ISelectOption[]>([])
   readonly hasError = input<boolean>(false)
+
+  readonly uniqueId = computed(() => {
+    if (this.id()) {
+      return this.id()
+    }
+    return `totvs-select-${crypto.randomUUID()}`
+  })
 
   selectedOption: ISelectOption | null = null
   disabled = false
@@ -62,12 +64,12 @@ export class SelectComponent implements ControlValueAccessor {
     this.onTouched()
   }
 
-  blur() {
+  onBlur() {
     this.onTouched()
     this.blurred.emit()
   }
 
-  focus() {
+  onFocus() {
     this.focused.emit()
   }
 }

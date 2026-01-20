@@ -4,13 +4,13 @@
     'totvs-select--selected': !!selectedOption,
     'totvs-select--error': hasError(),
   }"
-  [attr.name]="name()"
+  [attr.id]="uniqueId()"
   [disabled]="disabled"
   [ngModel]="selectedOption"
   (ngModelChange)="onValueChange($event)"
   [compareWith]="compareOptions"
-  (blur)="blur()"
-  (focus)="focus()"
+  (blur)="onBlur()"
+  (focus)="onFocus()"
 >
   <option [ngValue]="null" disabled hidden>{{ placeholder() }}</option>
   @for (option of options(); track option.value) {
