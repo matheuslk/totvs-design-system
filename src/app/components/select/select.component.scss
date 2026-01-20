@@ -43,7 +43,7 @@
 
   &:hover {
     cursor: pointer;
-    &:not(.totvs-select--error):not(:disabled) {
+    &:not(.totvs-select--error):not(:disabled):not(:focus) {
       border-color: var(--color-hover);
       background-color: var(--background-hover);
     }
