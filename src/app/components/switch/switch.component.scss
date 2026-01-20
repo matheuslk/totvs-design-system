@@ -54,7 +54,7 @@
     outline-offset: 2px;
   }
 
-  &[aria-checked='false'][aria-disabled='false'] {
+  &[aria-checked='false']:not(:disabled) {
     .totvs-switch__toggle:hover {
       background-color: var(--color-unchecked-hover);
       border-color: var(--color-checked-hover);
@@ -75,7 +75,7 @@
     }
   }
 
-  &[aria-disabled='true'] {
+  &:disabled {
     cursor: not-allowed;
     .totvs-switch {
       &__track {

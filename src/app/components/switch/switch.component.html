@@ -1,21 +1,24 @@
 <button
   role="switch"
   class="totvs-switch"
+  [attr.id]="uniqueId()"
+  [attr.aria-label]="ariaLabel()"
+  [attr.aria-labelledby]="ariaLabelledBy()"
   [attr.aria-checked]="isChecked() ? 'true' : 'false'"
-  [attr.tabindex]="disabled ? '0' : '1'"
-  [attr.aria-disabled]="disabled ? 'true' : 'false'"
+  [disabled]="disabled"
   (blur)="onBlur()"
   (focus)="onFocus()"
-  (mousedown)="onValueChange($event)"
+  (click)="onValueChange()"
 >
   <div class="totvs-switch__track">
-    <div class="totvs-switch__toggle" aria-label="false">
+    <div class="totvs-switch__toggle">
       @if (isChecked()) {
         <svg
           width="1rem"
           height="1rem"
           viewBox="0 0 256 256"
           fill="currentColor"
+          aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path

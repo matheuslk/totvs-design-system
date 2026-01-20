@@ -1,5 +1,7 @@
-import { Component, effect, forwardRef, output, signal } from '@angular/core'
+import { Component, computed, effect, forwardRef, input, output, signal, } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule, } from '@angular/forms'
+
+const DEFAULT_ARIA_LABEL = 'Switch'
 
 @Component({
   selector: 'totvs-switch',
@@ -15,15 +17,26 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule, } from '@
   ],
 })
 export class SwitchComponent implements ControlValueAccessor {
-  readonly blurred = output<void>()
-  readonly focused = output<void>()
-  readonly checked = output<boolean>()
-
   constructor() {
     effect(() => {
       this.checked.emit(this.isChecked())
     })
   }
+
+  readonly blurred = output<void>()
+  readonly focused = output<void>()
+  readonly checked = output<boolean>()
+
+  readonly id = input<string>()
+  readonly ariaLabelledBy = input<string>()
+  readonly ariaLabel = input<string>(DEFAULT_ARIA_LABEL)
+
+  readonly uniqueId = computed(() => {
+    if (this.id()) {
+      return this.id()
+    }
+    return `totvs-switch-${crypto.randomUUID()}`
+  })
 
   isChecked = signal(false)
   disabled = false
@@ -47,11 +60,7 @@ export class SwitchComponent implements ControlValueAccessor {
     this.disabled = isDisabled
   }
 
-  onValueChange(event: MouseEvent) {
-    if (this.disabled) {
-      event.preventDefault()
-      return
-    }
+  onValueChange() {
     const value = !this.isChecked()
     this.isChecked.set(value)
     this.onChange(value)

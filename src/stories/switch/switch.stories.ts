@@ -26,11 +26,35 @@ const meta: Meta<SwitchComponent> = {
       description: 'Evento emitido quando o valor do componente é alterado.',
     },
 
+    id: {
+      control: 'text',
+      description:
+        'Identificador do componente no DOM. Use para vincular <label for="..."> ou para testes (automation). ' +
+        'Se não informado, um id único pode ser gerado internamente (quando aplicável).',
+    },
+    ariaLabelledBy: {
+      control: 'text',
+      description:
+        'ID(s) do(s) elemento(s) que rotulam o componente (atributo aria-labelledby). ' +
+        'Use quando a label estiver fora do componente (ex.: <label id="x">... ). ' +
+        'Aceita múltiplos IDs separados por espaço.',
+    },
+    ariaLabel: {
+      control: 'text',
+      description:
+        'Rótulo acessível do componente (atributo aria-label). ' +
+        'Use quando não houver um <label> visível associado ao componente. ' +
+        'Se ariaLabelledBy estiver definido, ele normalmente tem prioridade como fonte de rotulagem.',
+    },
+
     disabled: {
       control: 'boolean',
-      description: 'Desabilita o componente, impedindo a interação.',
+      description:
+        'Propriedade interna utilizada para desabilitar o componente, impedindo interação e seleção.',
+      type: 'boolean',
     },
     isChecked: { table: { disable: true } },
+    uniqueId: { table: { disable: true } },
 
     // Configurações para métodos internos
     writeValue: { table: { disable: true } },
@@ -71,7 +95,12 @@ export const WithFormControl: Story = {
       },
       template: `
         <div style="display: flex; flex-direction: column; gap: 1rem; font-family: sans-serif;">
-          <totvs-switch [formControl]="control"></totvs-switch>
+          <totvs-switch
+            [formControl]="control"
+            [id]="id"
+            [ariaLabel]="ariaLabel"
+            [ariaLabelledBy]="ariaLabelledBy"
+          ></totvs-switch>
 
           <button
             (click)="toggleDisabled()"
@@ -107,7 +136,13 @@ export const WithNgModel: Story = {
       },
       template: `
         <div style="display: flex; flex-direction: column; gap: 1rem; font-family: sans-serif;">
-          <totvs-switch [(ngModel)]="state.value" [disabled]="state.disabled"></totvs-switch>
+          <totvs-switch
+            [(ngModel)]="state.value"
+            [disabled]="state.disabled"
+            [id]="id"
+            [ariaLabel]="ariaLabel"
+            [ariaLabelledBy]="ariaLabelledBy"
+          ></totvs-switch>
 
           <button
             (click)="toggleDisabled()"
