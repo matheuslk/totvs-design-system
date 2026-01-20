@@ -1,8 +1,8 @@
-import { Meta, moduleMetadata, StoryObj } from '@storybook/angular'
-import { SelectComponent } from '../../app/components/select/select.component'
-import { MOCK_SELECT_OPTIONS } from '../../app/mocks/select-options.mock'
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { JsonPipe } from '@angular/common'
+import {Meta, moduleMetadata, StoryObj} from '@storybook/angular'
+import {SelectComponent} from '../../app/components/select/select.component'
+import {MOCK_SELECT_OPTIONS} from '../../app/mocks/select-options.mock'
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {JsonPipe} from '@angular/common'
 
 const meta: Meta<SelectComponent> = {
   title: 'Components/Select',
@@ -26,14 +26,49 @@ const meta: Meta<SelectComponent> = {
       description: 'Evento emitido quando o componente perde o foco.',
     },
 
+    id: {
+      control: 'text',
+      description:
+        'Identificador do componente no DOM. Use para vincular <label for="..."> ou para testes (automation). ' +
+        'Se não informado, um id único pode ser gerado internamente (quando aplicável).',
+    },
+    ariaLabelledBy: {
+      control: 'text',
+      description:
+        'ID(s) do(s) elemento(s) que rotulam o componente (atributo aria-labelledby). ' +
+        'Use quando a label estiver fora do componente (ex.: <label id="x">... ). ' +
+        'Aceita múltiplos IDs separados por espaço.',
+    },
+    ariaLabel: {
+      control: 'text',
+      description:
+        'Rótulo acessível do componente (atributo aria-label). ' +
+        'Use quando não houver um <label> visível associado ao componente. ' +
+        'Se ariaLabelledBy estiver definido, ele normalmente tem prioridade como fonte de rotulagem.',
+    },
+    placeholder: {
+      control: 'text',
+      description:
+        'Texto exibido quando nenhuma opção está selecionada. ' +
+        'Não substitui uma label (acessibilidade): prefira ariaLabel/ariaLabelledBy ou <label>.',
+    },
+    options: {
+      control: 'object',
+      description:
+        'Lista de opções disponíveis para seleção. Cada item deve seguir a interface ISelectOption. ' +
+        'Alterar essa lista em runtime atualiza as opções exibidas no componente.',
+    },
     hasError: {
       control: 'boolean',
       description:
         'Indica que o componente está em estado de erro (exibe feedback visual de validação).',
     },
+
     disabled: {
       control: 'boolean',
-      description: 'Desabilita o componente, impedindo interação e seleção.',
+      description:
+        'Propriedade interna utilizada para desabilitar o componente, impedindo interação e seleção.',
+      type: 'boolean',
     },
     selectedOption: { table: { disable: true } },
     uniqueId: { table: { disable: true } },
@@ -80,9 +115,11 @@ export const WithFormControl: Story = {
           <totvs-select
             [formControl]="control"
             [options]="options"
+            [id]="id"
+            [ariaLabel]="ariaLabel"
+            [ariaLabelledBy]="ariaLabelledBy"
             [placeholder]="placeholder"
             [hasError]="hasError"
-            [id]="id"
           ></totvs-select>
 
           <button
@@ -121,11 +158,13 @@ export const WithNgModel: Story = {
         <div style="display: flex; flex-direction: column; gap: 1rem; font-family: sans-serif;">
           <totvs-select
             [(ngModel)]="state.value"
-            [disabled]="state.disabled"
             [options]="options"
+            [id]="id"
+            [ariaLabel]="ariaLabel"
+            [ariaLabelledBy]="ariaLabelledBy"
             [placeholder]="placeholder"
             [hasError]="hasError"
-            [id]="id"
+            [disabled]="state.disabled"
           ></totvs-select>
 
           <button

@@ -1,7 +1,9 @@
-import { Component, computed, forwardRef, input, output } from '@angular/core'
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule, } from '@angular/forms'
-import { ISelectOption } from './select-option.interface'
-import { CommonModule } from '@angular/common'
+import {Component, computed, forwardRef, input, output} from '@angular/core'
+import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule,} from '@angular/forms'
+import {ISelectOption} from './select-option.interface'
+import {CommonModule} from '@angular/common'
+
+const DEFAULT_PLACEHOLDER = 'Selecione uma opção...'
 
 @Component({
   selector: 'totvs-select',
@@ -21,7 +23,9 @@ export class SelectComponent implements ControlValueAccessor {
   readonly focused = output<void>()
 
   readonly id = input<string>()
-  readonly placeholder = input<string>('Escolha uma opção')
+  readonly ariaLabelledBy = input<string>()
+  readonly ariaLabel = input<string>(DEFAULT_PLACEHOLDER)
+  readonly placeholder = input<string>(DEFAULT_PLACEHOLDER)
   readonly options = input<ISelectOption[]>([])
   readonly hasError = input<boolean>(false)
 

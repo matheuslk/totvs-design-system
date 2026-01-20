@@ -5,6 +5,9 @@
     'totvs-select--error': hasError(),
   }"
   [attr.id]="uniqueId()"
+  [attr.aria-invalid]="hasError()"
+  [attr.aria-label]="ariaLabel()"
+  [attr.aria-labelledby]="ariaLabelledBy()"
   [disabled]="disabled"
   [ngModel]="selectedOption"
   (ngModelChange)="onValueChange($event)"

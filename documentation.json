@@ -99,7 +99,7 @@
         },
         {
             "name": "SelectComponent",
-            "id": "component-SelectComponent-24faeaa1db4cae46d1988760819490f117790e80223d82a8c46842f3222d327610720b291e2a2250901eae8cc17f589df5cc284ee60fe672df8f1ab9440105f9",
+            "id": "component-SelectComponent-1c5173738de1455d3956dc3a65c26c2ce33f212743a9660056619c919337606617ba7510091b82b8006d0430cdabc67bd1b33a1d1ed684bddd40e6602fcfc079",
             "file": "src/app/components/select/select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -120,6 +120,35 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "ariaLabel",
+                    "defaultValue": "DEFAULT_PLACEHOLDER",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "ariaLabelledBy",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
                     "name": "hasError",
                     "defaultValue": "false",
                     "deprecated": false,
@@ -128,7 +157,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 35,
                     "modifierKind": [
                         148
                     ],
@@ -142,7 +171,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 30,
                     "modifierKind": [
                         148
                     ],
@@ -157,7 +186,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 34,
                     "modifierKind": [
                         148
                     ],
@@ -165,14 +194,14 @@
                 },
                 {
                     "name": "placeholder",
-                    "defaultValue": "'Escolha uma opção'",
+                    "defaultValue": "DEFAULT_PLACEHOLDER",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 33,
                     "modifierKind": [
                         148
                     ],
@@ -188,7 +217,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 27,
                     "modifierKind": [
                         148
                     ],
@@ -202,7 +231,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 28,
                     "modifierKind": [
                         148
                     ],
@@ -219,7 +248,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 36
+                    "line": 45
                 },
                 {
                     "name": "onChange",
@@ -230,7 +259,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 38
+                    "line": 47
                 },
                 {
                     "name": "onTouched",
@@ -241,7 +270,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 39
+                    "line": 48
                 },
                 {
                     "name": "selectedOption",
@@ -252,18 +281,18 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 44
                 },
                 {
                     "name": "uniqueId",
-                    "defaultValue": "computed(() => {\r\n    if (this.id()) {\r\n      return this.id()\r\n    }\r\n    return `totvs-select-${crypto.randomUUID()}`\r\n  })",
+                    "defaultValue": "computed(() => {\n    if (this.id()) {\n      return this.id()\n    }\n    return `totvs-select-${crypto.randomUUID()}`\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 37,
                     "modifierKind": [
                         148
                     ]
@@ -293,7 +322,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 66,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -327,7 +356,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 76,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -337,7 +366,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 72,
+                    "line": 81,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -356,7 +385,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 61,
+                    "line": 70,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -398,7 +427,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 45,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -441,7 +470,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 58,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -474,7 +503,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 62,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -506,7 +535,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 50,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -546,7 +575,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, computed, forwardRef, input, output } from '@angular/core'\r\nimport { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule, } from '@angular/forms'\r\nimport { ISelectOption } from './select-option.interface'\r\nimport { CommonModule } from '@angular/common'\r\n\r\n@Component({\r\n  selector: 'totvs-select',\r\n  imports: [CommonModule, ReactiveFormsModule, FormsModule],\r\n  templateUrl: './select.component.html',\r\n  styleUrl: './select.component.scss',\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => SelectComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n})\r\nexport class SelectComponent implements ControlValueAccessor {\r\n  readonly blurred = output<void>()\r\n  readonly focused = output<void>()\r\n\r\n  readonly id = input<string>()\r\n  readonly placeholder = input<string>('Escolha uma opção')\r\n  readonly options = input<ISelectOption[]>([])\r\n  readonly hasError = input<boolean>(false)\r\n\r\n  readonly uniqueId = computed(() => {\r\n    if (this.id()) {\r\n      return this.id()\r\n    }\r\n    return `totvs-select-${crypto.randomUUID()}`\r\n  })\r\n\r\n  selectedOption: ISelectOption | null = null\r\n  disabled = false\r\n\r\n  onChange: (value: ISelectOption | null) => void = () => {}\r\n  onTouched: () => void = () => {}\r\n\r\n  writeValue(value: ISelectOption | null): void {\r\n    this.selectedOption = value ?? null\r\n  }\r\n\r\n  registerOnChange(fn: (value: ISelectOption | null) => void): void {\r\n    this.onChange = fn\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled\r\n  }\r\n\r\n  compareOptions(o1: ISelectOption, o2: ISelectOption) {\r\n    return o1?.value === o2?.value\r\n  }\r\n\r\n  onValueChange(value: ISelectOption | null) {\r\n    this.selectedOption = value\r\n    this.onChange(value)\r\n    this.onTouched()\r\n  }\r\n\r\n  onBlur() {\r\n    this.onTouched()\r\n    this.blurred.emit()\r\n  }\r\n\r\n  onFocus() {\r\n    this.focused.emit()\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, computed, forwardRef, input, output } from '@angular/core'\nimport {\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALUE_ACCESSOR,\n  ReactiveFormsModule,\n} from '@angular/forms'\nimport { ISelectOption } from './select-option.interface'\nimport { CommonModule } from '@angular/common'\n\nconst DEFAULT_PLACEHOLDER = 'Selecione uma opção'\n\n@Component({\n  selector: 'totvs-select',\n  imports: [CommonModule, ReactiveFormsModule, FormsModule],\n  templateUrl: './select.component.html',\n  styleUrl: './select.component.scss',\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SelectComponent),\n      multi: true,\n    },\n  ],\n})\nexport class SelectComponent implements ControlValueAccessor {\n  readonly blurred = output<void>()\n  readonly focused = output<void>()\n\n  readonly id = input<string>()\n  readonly ariaLabelledBy = input<string>()\n  readonly ariaLabel = input<string>(DEFAULT_PLACEHOLDER)\n  readonly placeholder = input<string>(DEFAULT_PLACEHOLDER)\n  readonly options = input<ISelectOption[]>([])\n  readonly hasError = input<boolean>(false)\n\n  readonly uniqueId = computed(() => {\n    if (this.id()) {\n      return this.id()\n    }\n    return `totvs-select-${crypto.randomUUID()}`\n  })\n\n  selectedOption: ISelectOption | null = null\n  disabled = false\n\n  onChange: (value: ISelectOption | null) => void = () => {}\n  onTouched: () => void = () => {}\n\n  writeValue(value: ISelectOption | null): void {\n    this.selectedOption = value ?? null\n  }\n\n  registerOnChange(fn: (value: ISelectOption | null) => void): void {\n    this.onChange = fn\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled\n  }\n\n  compareOptions(o1: ISelectOption, o2: ISelectOption) {\n    return o1?.value === o2?.value\n  }\n\n  onValueChange(value: ISelectOption | null) {\n    this.selectedOption = value\n    this.onChange(value)\n    this.onTouched()\n  }\n\n  onBlur() {\n    this.onTouched()\n    this.blurred.emit()\n  }\n\n  onFocus() {\n    this.focused.emit()\n  }\n}\n",
             "styleUrl": "./select.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -555,7 +584,7 @@
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<select\n  class=\"totvs-select\"\n  [class]=\"{\n    'totvs-select--selected': !!selectedOption,\n    'totvs-select--error': hasError(),\n  }\"\n  [attr.id]=\"uniqueId()\"\n  [disabled]=\"disabled\"\n  [ngModel]=\"selectedOption\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [compareWith]=\"compareOptions\"\n  (blur)=\"onBlur()\"\n  (focus)=\"onFocus()\"\n>\n  <option [ngValue]=\"null\" disabled hidden>{{ placeholder() }}</option>\n  @for (option of options(); track option.value) {\n    <option [ngValue]=\"option\">\n      {{ option.label }}\n    </option>\n  }\n</select>\n"
+            "templateData": "<select\n  class=\"totvs-select\"\n  [class]=\"{\n    'totvs-select--selected': !!selectedOption,\n    'totvs-select--error': hasError(),\n  }\"\n  [attr.id]=\"uniqueId()\"\n  [attr.aria-invalid]=\"hasError()\"\n  [attr.aria-label]=\"ariaLabel()\"\n  [attr.aria-labelledby]=\"ariaLabelledBy()\"\n  [disabled]=\"disabled\"\n  [ngModel]=\"selectedOption\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [compareWith]=\"compareOptions\"\n  (blur)=\"onBlur()\"\n  (focus)=\"onFocus()\"\n>\n  <option [ngValue]=\"null\" disabled hidden>{{ placeholder() }}</option>\n  @for (option of options(); track option.value) {\n    <option [ngValue]=\"option\">\n      {{ option.label }}\n    </option>\n  }\n</select>\n"
         },
         {
             "name": "SwitchComponent",
@@ -921,6 +950,16 @@
                 "defaultValue": "{\r\n  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]\r\n}"
             },
             {
+                "name": "DEFAULT_PLACEHOLDER",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/select/select.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'Selecione uma opção'"
+            },
+            {
                 "name": "MOCK_SELECT_OPTIONS",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -955,6 +994,18 @@
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
                     "defaultValue": "{\r\n  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]\r\n}"
+                }
+            ],
+            "src/app/components/select/select.component.ts": [
+                {
+                    "name": "DEFAULT_PLACEHOLDER",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/select/select.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'Selecione uma opção'"
                 }
             ],
             "src/app/mocks/select-options.mock.ts": [
@@ -1039,7 +1090,17 @@
                 "linktype": "component",
                 "name": "SelectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/20",
+                "coverageCount": "0/22",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/select/select.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DEFAULT_PLACEHOLDER",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
