@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  // Font
+  --font-family: Roboto, Nunito Sans;
+  --font-size-default: 1rem;
+  --font-weight-normal: 400;
+
+  // Colors
+  --background: #fbfbfb;
+  --color: #1d2426;
+  --background-disabled: #dadedf;
+  --color-disabled: #dadedf;
+  --color-hover: #5b1c7d;
+  --background-hover: #f2eaf6;
+  --color-focused: #753399;
+  --text-color: #1d2426;
+  --text-color-empty: #b6bdbf;
+  --color-error: #be3e37;
+
+  // Border
+  --border-width-sm: 1px;
+  --border-radius-md: 4px;
+
+  // Outline
+  --outline-color-focused: #260538;
+  --outline-width: 4px;
+}
+
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
