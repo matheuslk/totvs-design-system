@@ -48,9 +48,9 @@ export class SwitchComponent implements ControlValueAccessor {
   }
 
   onValueChange(event: MouseEvent) {
-    console.log('value change')
     if (this.disabled) {
       event.preventDefault()
+      return
     }
     const value = !this.isChecked()
     this.isChecked.set(value)

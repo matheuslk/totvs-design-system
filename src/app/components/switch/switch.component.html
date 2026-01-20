@@ -6,7 +6,7 @@
   [attr.aria-disabled]="disabled ? 'true' : 'false'"
   (blur)="onBlur()"
   (focus)="onFocus()"
-  (click)="onValueChange($event)"
+  (mousedown)="onValueChange($event)"
 >
   <div class="totvs-switch__track">
     <div class="totvs-switch__toggle" aria-label="false">

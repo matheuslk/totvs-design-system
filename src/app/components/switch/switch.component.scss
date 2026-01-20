@@ -19,7 +19,6 @@
 
   min-height: 1.5rem;
 
-  //appearance: unset;
   border: none;
   background: none;
   caret-color: transparent;
@@ -55,7 +54,7 @@
     outline-offset: 2px;
   }
 
-  &[aria-checked='false'] {
+  &[aria-checked='false'][aria-disabled='false'] {
     .totvs-switch__toggle:hover {
       background-color: var(--color-unchecked-hover);
       border-color: var(--color-checked-hover);
@@ -63,39 +62,30 @@
   }
 
   &[aria-checked='true'] {
-    .totvs-switch__track {
-      background-color: var(--track-checked);
-    }
-    .totvs-switch__toggle {
-      color: var(--color-unchecked);
-      background-color: var(--color-checked);
-      border-color: transparent;
-      transform: translate(100%, -50%);
+    .totvs-switch {
+      &__track {
+        background-color: var(--track-checked);
+      }
+      &__toggle {
+        color: var(--color-unchecked);
+        background-color: var(--color-checked);
+        border-color: transparent;
+        transform: translate(100%, -50%);
+      }
     }
   }
 
   &[aria-disabled='true'] {
     cursor: not-allowed;
-    .totvs-switch__track {
-      cursor: not-allowed;
+    .totvs-switch {
+      &__track {
+        background-color: var(--color-unchecked-disabled);
+        cursor: not-allowed;
+      }
+      &__toggle {
+        background-color: var(--color-unchecked-disabled);
+        border-color: var(--color-checked-disabled);
+      }
     }
   }
-
-  &[aria-disabled='true'][aria-checked='false'] {
-    .totvs-switch__toggle {
-      background-color: var(--color-unchecked-disabled);
-      border-color: var(--color-checked-disabled);
-    }
-  }
-
-  //&[aria-checked='true'] {
-  //  .totvs-switch {
-  //    &__track {
-  //      background-color: var(--background-hover);
-  //    }
-  //    &__toggle {
-  //      transform: translate(100%, -50%);
-  //    }
-  //  }
-  //}
 }
