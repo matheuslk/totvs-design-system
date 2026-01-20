@@ -1,0 +1,101 @@
+.totvs-switch {
+  --color-unchecked: var(--color-neutral-light-00);
+  --color-checked: var(--color-action-default);
+
+  --color-unchecked-hover: var(--color-brand-01-lightest);
+  --color-checked-hover: var(--color-brand-01-dark);
+
+  --color-unchecked-disabled: var(--color-neutral-light-02);
+  --color-checked-disabled: var(--color-neutral-01);
+
+  --border-color: var(--color-neutral-dark-01);
+
+  --track-unchecked: var(--color-neutral-light-02);
+  --track-checked: var(--color-brand-01-light);
+
+  --outline-color-focused: var(--color-action-focus);
+
+  position: relative;
+
+  min-height: 1.5rem;
+
+  //appearance: unset;
+  border: none;
+  background: none;
+  caret-color: transparent;
+
+  &__track {
+    background-color: var(--track-unchecked);
+    height: 1rem;
+    width: 3rem;
+    border-radius: 600px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  &__toggle {
+    background-color: var(--color-unchecked);
+    border: var(--border-width-md) solid var(--border-color);
+    border-radius: 100%;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:focus {
+    outline: var(--outline-color-focused) solid var(--outline-width);
+    outline-offset: 2px;
+  }
+
+  &[aria-checked='false'] {
+    .totvs-switch__toggle:hover {
+      background-color: var(--color-unchecked-hover);
+      border-color: var(--color-checked-hover);
+    }
+  }
+
+  &[aria-checked='true'] {
+    .totvs-switch__track {
+      background-color: var(--track-checked);
+    }
+    .totvs-switch__toggle {
+      color: var(--color-unchecked);
+      background-color: var(--color-checked);
+      border-color: transparent;
+      transform: translate(100%, -50%);
+    }
+  }
+
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    .totvs-switch__track {
+      cursor: not-allowed;
+    }
+  }
+
+  &[aria-disabled='true'][aria-checked='false'] {
+    .totvs-switch__toggle {
+      background-color: var(--color-unchecked-disabled);
+      border-color: var(--color-checked-disabled);
+    }
+  }
+
+  //&[aria-checked='true'] {
+  //  .totvs-switch {
+  //    &__track {
+  //      background-color: var(--background-hover);
+  //    }
+  //    &__toggle {
+  //      transform: translate(100%, -50%);
+  //    }
+  //  }
+  //}
+}
