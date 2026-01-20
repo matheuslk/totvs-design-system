@@ -5,23 +5,27 @@
   --font-weight-normal: 400;
 
   // Colors
-  --background: #fbfbfb;
-  --color: #1d2426;
-  --background-disabled: #dadedf;
-  --color-disabled: #dadedf;
-  --color-hover: #5b1c7d;
-  --background-hover: #f2eaf6;
-  --color-focused: #753399;
-  --text-color: #1d2426;
-  --text-color-empty: #b6bdbf;
+  --color-neutral-dark-01: #4a5c60;
+  --color-neutral-dark-02: #1d2426;
+
+  --color-neutral-light-01: #fbfbfb;
+  --color-neutral-light-02: #dadedf;
+  --color-neutral-light-03: #b6bdbf;
+
+  --color-brand-01-dark: #5b1c7d;
+  --color-brand-01-lightest: #f2eaf6;
+
+  --color-action-focus: #260538;
+  --color-action-default: #753399;
+
   --color-error: #be3e37;
 
   // Border
   --border-width-sm: 1px;
+  --border-width-md: 2px;
   --border-radius-md: 4px;
 
   // Outline
-  --outline-color-focused: #260538;
   --outline-width: 4px;
 }
 
