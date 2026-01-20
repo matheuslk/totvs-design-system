@@ -1,5 +1,17 @@
-import { Component, computed, effect, forwardRef, input, output, signal, } from '@angular/core'
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule, } from '@angular/forms'
+import {
+  Component,
+  computed,
+  effect,
+  forwardRef,
+  input,
+  output,
+  signal,
+} from '@angular/core'
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms'
 
 const DEFAULT_ARIA_LABEL = 'Switch'
 
@@ -38,7 +50,7 @@ export class SwitchComponent implements ControlValueAccessor {
     return `totvs-switch-${crypto.randomUUID()}`
   })
 
-  isChecked = signal(false)
+  readonly isChecked = signal(false)
   disabled = false
 
   onChange: (value: boolean | null) => void = () => {}

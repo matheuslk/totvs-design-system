@@ -1,7 +1,7 @@
-import { Meta, moduleMetadata, StoryObj } from '@storybook/angular'
-import { SwitchComponent } from '../../app/components/switch/switch.component'
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { JsonPipe } from '@angular/common'
+import {Meta, moduleMetadata, StoryObj} from '@storybook/angular'
+import {SwitchComponent} from '../../app/components/switch/switch.component'
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {JsonPipe} from '@angular/common'
 
 const meta: Meta<SwitchComponent> = {
   title: 'Components/Switch',
@@ -77,7 +77,7 @@ export const Default: Story = {}
 export const WithFormControl: Story = {
   render: (args) => {
     const control = new FormControl({
-      value: false,
+      value: true,
       disabled: args.disabled,
     })
 

@@ -1,8 +1,8 @@
-import {Meta, moduleMetadata, StoryObj} from '@storybook/angular'
-import {SelectComponent} from '../../app/components/select/select.component'
-import {MOCK_SELECT_OPTIONS} from '../../app/mocks/select-options.mock'
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms'
-import {JsonPipe} from '@angular/common'
+import { Meta, moduleMetadata, StoryObj } from '@storybook/angular'
+import { SelectComponent } from '../../app/components/select/select.component'
+import { MOCK_SELECT_OPTIONS } from '../../app/mocks/select-options.mock'
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { JsonPipe } from '@angular/common'
 
 const meta: Meta<SelectComponent> = {
   title: 'Components/Select',
@@ -94,7 +94,7 @@ export const Default: Story = {}
 export const WithFormControl: Story = {
   render: (args) => {
     const control = new FormControl({
-      value: args.options?.[0] || null,
+      value: args.options?.[1] || null,
       disabled: args.disabled,
     })
 
@@ -142,7 +142,7 @@ export const WithFormControl: Story = {
 export const WithNgModel: Story = {
   render: (args) => {
     const state = {
-      value: args.options?.[0] || null,
+      value: args.options?.[2] || null,
       disabled: args.disabled,
     }
 

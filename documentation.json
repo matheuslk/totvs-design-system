@@ -3,13 +3,23 @@
     "interfaces": [
         {
             "name": "ISelectOption",
-            "id": "interface-ISelectOption-83dd40ed0e083d99fe2b763de4c7d234d62ce9ae8f0f7e0bfca42a815e0fab48f225af095068872117027aabbdf9934578c427d9750f9250ff385de16f4cca62",
+            "id": "interface-ISelectOption-88f03434197f1a00cc36c753bd11eaa06f38fc51df2c235b5573c240627bbafc646e90e458efa18b4b38e262908188b94de6bcb704dd9f458ffedbeb10bd8c86",
             "file": "src/app/components/select/select-option.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface ISelectOption {\n  value: string\n  label: string\n}\n",
+            "sourceCode": "export interface ISelectOption {\n  value: string\n  label: string\n  disabled?: boolean\n}\n",
             "properties": [
+                {
+                    "name": "disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 4
+                },
                 {
                     "name": "label",
                     "deprecated": false,
@@ -584,11 +594,11 @@
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<select\n  class=\"totvs-select\"\n  [class]=\"{\n    'totvs-select--selected': !!selectedOption,\n    'totvs-select--error': hasError(),\n  }\"\n  [attr.id]=\"uniqueId()\"\n  [attr.aria-invalid]=\"hasError()\"\n  [attr.aria-label]=\"ariaLabel()\"\n  [attr.aria-labelledby]=\"ariaLabelledBy()\"\n  [disabled]=\"disabled\"\n  [ngModel]=\"selectedOption\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [compareWith]=\"compareOptions\"\n  (blur)=\"onBlur()\"\n  (focus)=\"onFocus()\"\n>\n  <option [ngValue]=\"null\" disabled hidden>{{ placeholder() }}</option>\n  @for (option of options(); track option.value) {\n    <option [ngValue]=\"option\">\n      {{ option.label }}\n    </option>\n  }\n</select>\n"
+            "templateData": "<select\n  class=\"totvs-select\"\n  [class]=\"{\n    'totvs-select--selected': !!selectedOption,\n    'totvs-select--error': hasError(),\n  }\"\n  [attr.id]=\"uniqueId()\"\n  [attr.aria-invalid]=\"hasError()\"\n  [attr.aria-label]=\"ariaLabel()\"\n  [attr.aria-labelledby]=\"ariaLabelledBy()\"\n  [disabled]=\"disabled\"\n  [ngModel]=\"selectedOption\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [compareWith]=\"compareOptions\"\n  (blur)=\"onBlur()\"\n  (focus)=\"onFocus()\"\n>\n  <option [ngValue]=\"null\" disabled hidden>{{ placeholder() }}</option>\n  @for (option of options(); track option.value) {\n    <option [ngValue]=\"option\" [disabled]=\"option.disabled\">\n      {{ option.label }}\n    </option>\n  }\n</select>\n"
         },
         {
             "name": "SwitchComponent",
-            "id": "component-SwitchComponent-e0aee4e867ee11a6235a29e151ceed801a9364d25131f180733ef41514647c49a074886e72cb4edcf67abdb470ab666071155a902703d2ac9f7022995c76eb9e",
+            "id": "component-SwitchComponent-faedd828967af066c9852db54b976872b1e46b610038ac1c5edf94ef2e2b479eefbf4bfa337903802975d6d289f004d716265dc66f2f25d5fc35f5386d414896",
             "file": "src/app/components/switch/switch.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -717,7 +727,10 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 53
+                    "line": 53,
+                    "modifierKind": [
+                        148
+                    ]
                 },
                 {
                     "name": "onChange",
@@ -952,7 +965,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  computed,\n  effect,\n  forwardRef,\n  input,\n  output,\n  signal,\n} from '@angular/core'\nimport {\n  ControlValueAccessor,\n  NG_VALUE_ACCESSOR,\n  ReactiveFormsModule,\n} from '@angular/forms'\n\nconst DEFAULT_ARIA_LABEL = 'Switch'\n\n@Component({\n  selector: 'totvs-switch',\n  imports: [ReactiveFormsModule],\n  templateUrl: './switch.component.html',\n  styleUrl: './switch.component.scss',\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SwitchComponent),\n      multi: true,\n    },\n  ],\n})\nexport class SwitchComponent implements ControlValueAccessor {\n  constructor() {\n    effect(() => {\n      this.checked.emit(this.isChecked())\n    })\n  }\n\n  readonly blurred = output<void>()\n  readonly focused = output<void>()\n  readonly checked = output<boolean>()\n\n  readonly id = input<string>()\n  readonly ariaLabelledBy = input<string>()\n  readonly ariaLabel = input<string>(DEFAULT_ARIA_LABEL)\n\n  readonly uniqueId = computed(() => {\n    if (this.id()) {\n      return this.id()\n    }\n    return `totvs-switch-${crypto.randomUUID()}`\n  })\n\n  isChecked = signal(false)\n  disabled = false\n\n  onChange: (value: boolean | null) => void = () => {}\n  onTouched: () => void = () => {}\n\n  writeValue(value: boolean | null): void {\n    this.isChecked.set(value ?? false)\n  }\n\n  registerOnChange(fn: (value: boolean | null) => void): void {\n    this.onChange = fn\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled\n  }\n\n  onValueChange() {\n    const value = !this.isChecked()\n    this.isChecked.set(value)\n    this.onChange(value)\n    this.onTouched()\n  }\n\n  onBlur() {\n    this.onTouched()\n    this.blurred.emit()\n  }\n\n  onFocus() {\n    this.focused.emit()\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  computed,\n  effect,\n  forwardRef,\n  input,\n  output,\n  signal,\n} from '@angular/core'\nimport {\n  ControlValueAccessor,\n  NG_VALUE_ACCESSOR,\n  ReactiveFormsModule,\n} from '@angular/forms'\n\nconst DEFAULT_ARIA_LABEL = 'Switch'\n\n@Component({\n  selector: 'totvs-switch',\n  imports: [ReactiveFormsModule],\n  templateUrl: './switch.component.html',\n  styleUrl: './switch.component.scss',\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SwitchComponent),\n      multi: true,\n    },\n  ],\n})\nexport class SwitchComponent implements ControlValueAccessor {\n  constructor() {\n    effect(() => {\n      this.checked.emit(this.isChecked())\n    })\n  }\n\n  readonly blurred = output<void>()\n  readonly focused = output<void>()\n  readonly checked = output<boolean>()\n\n  readonly id = input<string>()\n  readonly ariaLabelledBy = input<string>()\n  readonly ariaLabel = input<string>(DEFAULT_ARIA_LABEL)\n\n  readonly uniqueId = computed(() => {\n    if (this.id()) {\n      return this.id()\n    }\n    return `totvs-switch-${crypto.randomUUID()}`\n  })\n\n  readonly isChecked = signal(false)\n  disabled = false\n\n  onChange: (value: boolean | null) => void = () => {}\n  onTouched: () => void = () => {}\n\n  writeValue(value: boolean | null): void {\n    this.isChecked.set(value ?? false)\n  }\n\n  registerOnChange(fn: (value: boolean | null) => void): void {\n    this.onChange = fn\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled\n  }\n\n  onValueChange() {\n    const value = !this.isChecked()\n    this.isChecked.set(value)\n    this.onChange(value)\n    this.onTouched()\n  }\n\n  onBlur() {\n    this.onTouched()\n    this.blurred.emit()\n  }\n\n  onFocus() {\n    this.focused.emit()\n  }\n}\n",
             "styleUrl": "./switch.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -969,7 +982,7 @@
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<button\n  role=\"switch\"\n  class=\"totvs-switch\"\n  [attr.id]=\"uniqueId()\"\n  [attr.aria-label]=\"ariaLabel()\"\n  [attr.aria-labelledby]=\"ariaLabelledBy()\"\n  [attr.aria-checked]=\"isChecked() ? 'true' : 'false'\"\n  [disabled]=\"disabled\"\n  (blur)=\"onBlur()\"\n  (focus)=\"onFocus()\"\n  (click)=\"onValueChange()\"\n>\n  <div class=\"totvs-switch__track\">\n    <div class=\"totvs-switch__toggle\">\n      @if (isChecked()) {\n        <svg\n          width=\"1rem\"\n          height=\"1rem\"\n          viewBox=\"0 0 256 256\"\n          fill=\"currentColor\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          <path\n            stroke=\"currentColor\"\n            stroke-width=\"20\"\n            d=\"M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z\"\n          />\n        </svg>\n      }\n    </div>\n  </div>\n</button>\n"
+            "templateData": "<button\n  role=\"switch\"\n  class=\"totvs-switch\"\n  [attr.id]=\"uniqueId()\"\n  [attr.aria-label]=\"ariaLabel()\"\n  [attr.aria-labelledby]=\"ariaLabelledBy()\"\n  [attr.aria-checked]=\"isChecked() ? 'true' : 'false'\"\n  [disabled]=\"disabled\"\n  (blur)=\"onBlur()\"\n  (focus)=\"onFocus()\"\n  (click)=\"onValueChange()\"\n>\n  <div class=\"totvs-switch__track\">\n    <div class=\"totvs-switch__toggle\">\n      @if (isChecked()) {\n        <svg\n          width=\"1rem\"\n          height=\"1rem\"\n          viewBox=\"0 0 256 256\"\n          fill=\"currentColor\"\n          aria-hidden=\"true\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          <path\n            stroke=\"currentColor\"\n            stroke-width=\"20\"\n            d=\"M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z\"\n          />\n        </svg>\n      }\n    </div>\n  </div>\n</button>\n"
         }
     ],
     "modules": [],
@@ -1013,7 +1026,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ISelectOption[]",
-                "defaultValue": "[\n  { value: '1', label: 'Opção 1' },\n  { value: '2', label: 'Opção 2' },\n  { value: '3', label: 'Opção 3' },\n  { value: '4', label: 'Opção 4' },\n  { value: '5', label: 'Opção 5' },\n]"
+                "defaultValue": "[\n  { value: '1', label: 'Opção 1' },\n  { value: '2', label: 'Opção 2' },\n  { value: '3', label: 'Opção 3', disabled: true },\n  { value: '4', label: 'Opção 4' },\n  { value: '5', label: 'Opção 5', disabled: true },\n]"
             },
             {
                 "name": "routes",
@@ -1075,7 +1088,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ISelectOption[]",
-                    "defaultValue": "[\n  { value: '1', label: 'Opção 1' },\n  { value: '2', label: 'Opção 2' },\n  { value: '3', label: 'Opção 3' },\n  { value: '4', label: 'Opção 4' },\n  { value: '5', label: 'Opção 5' },\n]"
+                    "defaultValue": "[\n  { value: '1', label: 'Opção 1' },\n  { value: '2', label: 'Opção 2' },\n  { value: '3', label: 'Opção 3', disabled: true },\n  { value: '4', label: 'Opção 4' },\n  { value: '5', label: 'Opção 5', disabled: true },\n]"
                 }
             ],
             "src/app/app.routes.ts": [
@@ -1139,7 +1152,7 @@
                 "linktype": "interface",
                 "name": "ISelectOption",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
